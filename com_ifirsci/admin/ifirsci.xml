@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+  <name>com_ifirsci</name>
+  <author>Javier Cruceño</author>
+  <creationDate>Junio 2016</creationDate>
+  <copyright>(C) 2016 Instituto de Fisica Rosario. Todos los derechos reservados.
+  </copyright>
+  <license>GNU General Public License version 2 or later; see
+    LICENSE.txt</license>
+  <authorEmail>cruceno@ifir-conicet.gov.ar</authorEmail>
+  <authorUrl>www.ifir-conicet.gov.ar</authorUrl>
+  <version>1.0.0</version>
+  <description>COM_IFIRSCI_XML_DESCRIPTION</description>
+  
+  <scriptfile>script.php</scriptfile>
+  <install>
+    <sql>
+      <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+    </sql>
+  </install>
+  <uninstall>
+    <sql>
+      <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+    </sql>
+  </uninstall>
+  
+  <files folder="site">
+    <filename>index.html</filename>
+  </files>
+  <administration>
+  
+    <menu img="class:categories">COM_IFIRSCI_MENU </menu>
+    <submenu>
+      <menu link="option=com_ifirsci" view="publications" img="class:generic" alt="IfirSci/Publications">COM_IFIRSCI_PUBLiCATIONS</menu>    
+      <menu link="option=com_categories&amp;extension=com_ifirsci" view="categories" img="class:categories" alt="IfirSci/Categories">COM_IFIRSCI_CATEGORIES</menu>
+    </submenu>
+    
+    <files folder="admin">
+      <filename>index.html</filename>
+      <filename>access.xml</filename>
+      <filename>config.xml</filename>
+      <filename>controller.php</filename>
+      <filename>ifirsci.php</filename>
+      <folder>controllers</folder>
+      <folder>helpers</folder>
+      <folder>models</folder>
+      <folder>sql</folder>
+      <folder>tables</folder>
+      <folder>views</folder>
+    </files>
+    <languages folder="admin">
+      <language tag="en-GB">language/en-GB/en-GB.com_ifirsci.ini</language>
+      <language tag="en-GB">language/en-GB/en-GB.com_ifirsci.sys.ini</language>
+      <language tag="es-ES">language/en-GB/en-GB.com_ifirsci.ini</language>
+      <language tag="es-ES">language/en-GB/en-GB.com_ifirsci.sys.ini</language>
+    </languages>
+  </administration>
+</extension>
