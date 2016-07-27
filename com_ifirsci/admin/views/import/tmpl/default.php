@@ -1,19 +1,28 @@
 <?php
 defined('_JEXEC') or die;
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_ifirsci&view=publications'); ?>" method="post" name="adminForm" id="adminForm">
+
+<form action="<?php echo JRoute::_('index.php?option=com_ifirsci&view=import'); ?>" method="post" name="adminForm" id="adminForm">
  <?php if (!empty( $this->sidebar)) : ?>
   <div id="j-sidebar-container" class="span2">
     <?php echo $this->sidebar; ?>
   </div>
   <div id="j-main-container" class="span10">
-<?php else : ?>
+ <?php else : ?>
   <div id="j-main-container">
-<?php endif;?>
-			<input class="inputbox" name="inputfile" id="inputfile" type="file" />
-
-<div style="text-align: center;">
-	<input name="submit" value="<?php echo JText::_('Upload'); ?>" type="submit" />
-</div>
+ <?php endif;?>
+  	<div class="form-horizontal">	
+		<div class="control-group">
+		<div class="control-label">
+			<?php echo JText::_('COM_IFIRSCI_IMPORT_FILE_FIELD_LABEL')?>
+		</div>
+			<input class="input input-xxlarge " name="inputfile" id="inputfile" type="file" />
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<input name="submit" class="btn lg-btn-default" value="<?php echo JText::_('Upload'); ?>" type="submit" />
+			</div>
+		</div>
+  	</div>
   </div>
 </form>

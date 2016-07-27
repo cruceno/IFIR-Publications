@@ -3,9 +3,10 @@ defined('_JEXEC') or die;
 
 class IfirSciViewImport extends JViewLegacy
 {
-	public function display(){
+	public function display($tpl=null){
 		
 		$this->addToolbar();
+		parent::display($tpl);
 		
 	}
 	protected function addToolbar(){
