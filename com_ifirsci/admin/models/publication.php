@@ -30,6 +30,10 @@ class IfirSciModelPublication extends JModelAdmin
     if (empty($data))
     {
       $data = $this->getItem();
+      
+      $data->a_user_id=explode(',',$data->a_user_id);
+      $data->r_user_id=explode(',',$data->r_user_id);
+      
     }
 
     return $data;

@@ -11,9 +11,9 @@ class IfirSciModelPublications extends JModelList
         'Id', 'a.id',
         'Title', 'a.Title',
       	'Year', 'a.Year',
-      	'Source', 'a.Source',
+      	'Journal','a.journal',
       	'Authors', 'a.a_user_id',
-      		'State','a.state'
+      	'State','a.state'
       );
     }
 
@@ -31,7 +31,7 @@ class IfirSciModelPublications extends JModelList
     $query->select(
       $this->getState(
         'list.select',
-        'a.id, a.Title, a.Year, a.Source, a.a_user_id, a.State'
+        'a.id, a.Title, a.Year,a.journal, a.a_user_id, a.State'
       )
     );
     $query->from($db->quoteName('#__ifirsci_data').' AS a');

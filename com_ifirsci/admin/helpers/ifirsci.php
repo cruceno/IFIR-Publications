@@ -29,12 +29,12 @@ class IfirSciHelper
     return $result;
   }
   
-  public static function addSubmenu($vName = 'folios')
+  public static function addSubmenu($vName = 'publications')
   {
   	JHtmlSidebar::addEntry(
   			JText::_('COM_IFIRSCI_SUBMENU_PUBLICATIONS'),
   			'index.php?option=com_ifirsci&view=publications',
-  			$vName == 'folios'
+  			$vName == 'publications'
   			);
   	JHtmlSidebar::addEntry(
   			JText::_('COM_IFIRSCI_SUBMENU_CATEGORIES'),

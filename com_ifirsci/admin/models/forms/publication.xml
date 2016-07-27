@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-	<fieldset name="ifirsciitem">
-		<field name="id" type="text" default="0" label="JGLOBAL_FIELD_ID_LABEL"
+	<field name="id" type="text" default="0" label="JGLOBAL_FIELD_ID_LABEL"
   			readonly="true" class="readonly"
   			description="JGLOBAL_FIELD_ID_DESC"
 		/>
+	<field name="title" type="text" class="input-xxlarge input input-large-text "
+    		label="COM_IFIRSCI_TITLE_FIELD_LABEL" required="true"
+    		description="COM_IFIRSCI_TITLE_FIELD_DESCRIPTION"/>
+    <field name="bibtexCitation" type="text" class="input-large input"
+    		label="COM_IFIRSCI_CITATION_FIELD_LABEL" required="true"
+    		description="COM_IFIRSCI_CITATION_FIELD_DESCRIPTION"/>	
+    			
+    <field name="document_type" type="list" class="inputbox" multiple="false"
+    		label="COM_IFIRSCI_DOCuMENT_TYPE_FIELD_LABEL" required="true"
+    		description="COM_IFIRSCI_DOCUMENT_TYPE_FIELD_DESCRIPTION">
+    		<option value="Article">COM_IFIRSCI_DOCUMENT_TYPE_ARTICLE</option>
+    		<option value="Article in Press">COM_IFIRSCI_DOCUMENT_TYPE_ARTICLE_IN_PRESS</option>
+    		<option value="Review">COM_IFIRSCI_DOCUMENT_TYPE_REVIEW</option>    		
+    		<option value="Book">COM_IFIRSCI_DOCUMENT_TYPE_BOOK</option>
+     		<option value="Book Chapter">COM_IFIRSCI_DOCUMENT_TYPE_BOOK_CHAPTER</option>
+    		<option value="Editorial">COM_IFIRSCI_DOCUMENT_TYPE_BOOK_EDITORIAL</option>   		
+    		<option value="Conference Paper">COM_IFIRSCI_DOCUMENT_TYPE_CONFERENCE_PAPER</option>
+    		<option value="Letter">COM_IFIRSCI_DOCUMENT_TYPE_LETTER</option>
+    		<option value="Note">COM_IFIRSCI_DOCUMENT_TYPE_NOTE</option>
+    		<option value="Erratum">COM_IFIRSCI_DOCUMENT_TYPE_ERRATUM</option>
+    </field>
+    
+	<fieldset name="ifirsciitem">
+	
 		<field name="state" type="list"
       		label="JSTATUS" description="JFIELD_PUBLISHED_DESC"
       		class="inputbox small" size="1" default="1" >
@@ -13,7 +36,17 @@
      		<option value="2">JARCHIVED</option>
       		<option value="-2">JTRASHED</option>
     	</field>
-    		
+    	<field
+  			name="catid"
+  			type="category"
+  			extension="com_ifirsci"
+  			class="inputbox"
+  			default="0"
+  			label="COM_IFIRSCI_FIELD_CATID_LABEL"
+  			description="COM_IFIRSCI_FIELD_CATID_DESC"
+			>
+  			<option value="0">JOPTION_SELECT_CATEGORY</option>
+		</field>
 		<field
 			name="a_user_id"
 			type="sql"
@@ -22,9 +55,7 @@
 			description="COM_IFIRSCI_ACCEPTED_BY_DESC"
 			query="select id, name, username from #__users order by username ASC"
 			key_field="id" value_field="name"
-		>
-					<option value="">JOPTION_SELECT_AUTHORS</option>
-		</field>
+		/>
 		<field
 			name="r_user_id"
 			type="sql"
@@ -33,63 +64,43 @@
 			description="COM_IFIRSCI_REJECTED_BY_DESC"
 			query="select id, name, username from #__users order by username ASC"
 			key_field="id" value_field="name"
-		>
-					<option value="">JOPTION_SELECT_AUTHORS</option>
-		</field>
-      	<field
-  			name="catid"
-  			type="category"
-  			extension="com_ifirsci"
-  			class="inputbox"
-  			default=""
-  			label="COM_IFIRSCI_FIELD_CATID_LABEL"
-  			description="COM_IFIRSCI_FIELD_CATID_DESC"
-			>
-  			<option value="0">JOPTION_SELECT_CATEGORY</option>
-		</field>
-      	<field name="g_user_id" type="usergroup" multiple="multiple"
-      		label="COM_IFIRSCI_FIELD_GROUP_LABEL" 
-      		description="COM_IFIRSCI_FIELD_GROUP_DESC" />
+		/>
 	</fieldset>
 	<fieldset name="scopusCitation">
-	    <field name="title" type="text" class="inputbox"
-    		label="COM_IFIRSCI_TITLE_FIELD_LABEL"
-    		description="COM_IFIRSCI_TITLE_FIELD_DESCRIPTION"/>
-    	<field name="year"/>
-    	<field name="author" type="text" class="inputbox"
-    		label="COM_IFIRSCI_AUTHORS_FIELD_LABEL"
-    		description="COM_IFIRSCI_AUTHORS_FIELD_DESCRIPTION"
-    	/>
+    	<field name="author" type="text" class="input-xxlarge input"
+    		label="COM_IFIRSCI_AUTHORS_FIELD_LABEL" required="true"
+    		description="COM_IFIRSCI_AUTHORS_FIELD_DESCRIPTION"   	/>
     	<field name="journal" type="text" class="inputbox"
-    		label="COM_IFIRSCI_SOURCE_FIELD_LABEL"
-    		description="COM_IFIRSCI_SOURCE_FIELD_DESCRIPTION"/>
-    	<field name="volume" type="text" class="inputbox"
+    		label="COM_IFIRSCI_JOURNAL_FIELD_LABEL" required="true"
+    		description="COM_IFIRSCI_JOURNAL_FIELD_DESCRIPTION"/>
+    	<field name="year" type="calendar" size="4" format="%Y" 
+    		filter="user_utc" class="inputbox" 
+    		label="COM_IFIRSCI_YEAR_LABEL" required="true"
+    		description="COM_IFIRSCI_YEAR_DESCRIPTION"/>
+    	<field name="volume" type="text" class="input"
     		label="COM_IFIRSCI_VOLUME_FIELD_LABEL"
     		description="COM_IFIRSCI_VOLUME_FIELD_DESCRIPTION"/>
-    	<field name="issue" type="text" class="inputbox"
+    	<field name="number" type="text" class="inputbox"
     		label="COM_IFIRSCI_ISSUE_FIELD_LABEL"
     		description="COM_IFIRSCI_ISSUE_FIELD_DESCRIPTION"/>
-    	<field name="number" type="text" class="inputbox"
+    	<field name="art_number" type="text" class="inputbox"
     		label="COM_IFIRSCI_ARTNO_FIELD_LABEL"
     		description="COM_IFIRSCI_ARTNO_FIELD_DESCRIPTION"/>
     	<field name="pages" type="text" class="inputbox"
-    		label="COM_IFIRSCI_PAGE_START_FIELD_LABEL"
-    		description="COM_IFIRSCI_PAGE_START_FIELD_DESCRIPTION"/>
-    	<field name="notes" type="text" class="inputbox"
-    		label="COM_IFIRSCI_CITEDBY_FIELD_LABEL"
-    		description="COM_IFIRSCI_CITEDBY_FIELD_DESCRIPTION"/>
-    	<field name="doument_type" type="text" class="inputbox"
-    		label="COM_IFIRSCI_TYPE_FIELD_LABEL"
-    		description="COM_IFIRSCI_TYPE_FIELD_DESCRIPTION"/>
+    		label="COM_IFIRSCI_PAGES_FIELD_LABEL"
+    		description="COM_IFIRSCI_PAGES_FIELD_DESCRIPTION"/>
+    	<field name="note" type="text" class="inputbox"
+    		label="COM_IFIRSCI_NOTE_FIELD_LABEL" default="cited By 0"
+    		description="COM_IFIRSCI_NOTE_FIELD_DESCRIPTION"/>
     	<field name="doi" type="text" class="inputbox"
     		label="COM_IFIRSCI_DOI_FIELD_LABEL"
     		description="COM_IFIRSCI_DOI_FIELD_DESCRIPTION"/>
     	<field name="url" type="URL" class="inputbox"
-    		label="COM_IFIRSCI_LINK_FIELD_LABEL"
+    		label="COM_IFIRSCI_URL_FIELD_LABEL"
     		filter="url"
     		validate="url"
     		requiered="true"
-    		description="COM_IFIRSCI_LINK_FIELD_DESCRIPTION"/>
+    		description="COM_IFIRSCI_URL_FIELD_DESCRIPTION"/>
 	</fieldset>
 	<fieldset name="scopusBiblio">
     	<field name="affiliations" type="text" class="inputbox"
@@ -112,27 +123,27 @@
     		description="COM_IFIRSCI_ABREVIATED_SOURCE_FIELD_DESCRIPTION"/>
 	</fieldset>
 	<fieldset name="scopusAbstandKeys">
-		<field name="abstract" type="textarea" class="inputbox"
+		<field name="abstract" type="editor"
     		label="COM_IFIRSCI_ABSTRACT_FIELD_LABEL"
     		description="COM_IFIRSCI_ABSTRACT_FIELD_DESCRIPTION"/>
-		<field name="Author_keywords" type="text" class="inputbox"
-    		label="COM_IFIRSCI_AUTHOR_KEYWORDS_FIELD_LABEL"
+		<field name="author_keywords" type="textarea" class="inputbox"
+    		label="COM_IFIRSCI_AUTHOR_KEYWORDS_FIELD_LABEL" cols="30" rows="3"
     		description="COM_IFIRSCI_AUTHOR_KEYWORDS_FIELD_DESCRIPTION"/>
-	    <field name="Index_keywords" type="text" class="inputbox"
+	    <field name="keywords" type="textarea"  class="inputbox" cols="30" rows="3"
     		label="COM_IFIRSCI_INDEX_KEYWORDS_FIELD_LABEL"
     		description="COM_IFIRSCI_INDEX_KEYWORDS_FIELD_DESCRIPTION"/>
 	</fieldset>
 	<fieldset name="Other">
-		<field name="Conference_Name" type="text" class="inputbox"
+		<field name="conference_name" type="text" class="inputbox"
     		label="COM_IFIRSCI_CONFERENCE_NAME_FIELD_LABEL"
     		description="COM_IFIRSCI_CONFERENCE_NAME_FIELD_DESCRIPTION"/>
-		<field name="Conference_Date" type="text" class="inputbox"
+		<field name="conference_date" type="text" class="inputbox"
     		label="COM_IFIRSCI_CONFERENCE_DATE_FIELD_LABEL"
     		description="COM_IFIRSCI_CoNFERENCE_DATE_FIELD_DESCRIPTION"/>
-		<field name="Conference_Location" type="text" class="inputbox"
+		<field name="conference_location" type="text" class="inputbox"
     		label="COM_IFIRSCI_CONFERENCE_LOCATION_FIELD_LABEL"
     		description="COM_IFIRSCI_CONFERENCE_LOCATION_FIELD_DESCRIPTION"/>
-		<field name="Conference_Code" type="text" class="inputbox"
+		<field name="conference_code" type="text" class="inputbox"
     		label="COM_IFIRSCI_CONFERENCE_CODE_FIELD_LABEL"
     		description="COM_IFIRSCI_CONFERENCE_CODE_FIELD_DESCRIPTION"/>
 	</fieldset>

@@ -3,7 +3,6 @@ defined('_JEXEC') or die;
 $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn = $this->escape($this->state->get('list.direction'));
 ?>
-
 <form action="<?php echo JRoute::_('index.php?option=com_ifirsci&view=publications'); ?>" method="post" name="adminForm" id="adminForm">
  <?php if (!empty( $this->sidebar)) : ?>
   <div id="j-sidebar-container" class="span2">
@@ -28,7 +27,7 @@ $listDirn = $this->escape($this->state->get('list.direction'));
             <?php echo JHtml::_('grid.sort', 'COM_IFIRSCI_YEAR_LABEL', 'a.Year', $listDirn, $listOrder); ?>
           </th>
           <th>
-            <?php echo JHtml::_('grid.sort', 'COM_IFIRSCI_SOURCE_LABEL', 'a.Source', $listDirn, $listOrder); ?>
+            <?php echo JHtml::_('grid.sort', 'COM_IFIRSCI_JOURNAL_FIELD_LABEL', 'a.journal', $listDirn, $listOrder); ?>
           </th>
           <th>
             <?php echo JHtml::_('grid.sort', 'COM_IFIRSCI_ACCEPTED_BY_LABEL', 'a.a_user_id', $listDirn, $listOrder); ?>
@@ -48,7 +47,9 @@ $listDirn = $this->escape($this->state->get('list.direction'));
             </a>
           </td>
           <td><?php echo $this->escape($item->Year)?></td>
-          <td><?php echo $this->escape($item->Source)?></td>
+          <td><?php echo $this->escape($item->journal)?></td>
+          <td><?php foreach (explode(',',$item->a_user_id) as $id){
+          				echo JFactory::getUser($id)->name.', ';}?></td>
         </tr>
         <?php endforeach; ?>
       </tbody>

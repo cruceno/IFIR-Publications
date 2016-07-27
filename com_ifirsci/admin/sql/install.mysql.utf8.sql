@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS `#__ifirsci_data` (
   `a_user_id` varchar(500) NOT NULL DEFAULT '',
   `r_user_id` varchar(500) NOT NULL DEFAULT '',
   `catid` int(11) NOT NULL DEFAULT '0',
+  `bibtexCitation` varchar(100) NOT NULL,
   `state` tinyint(1) NOT NULL DEFAULT '0',
   `author` text NOT NULL,
   `title` text NOT NULL,
@@ -36,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `#__ifirsci_data` (
   `pages` varchar(11) NOT NULL,
   `doi` varchar(150) NOT NULL,
   `url` varchar(300) NOT NULL,
+  `note` text NOT NULL,
   `affiliation` text NOT NULL,
   `abstract` mediumtext NOT NULL,
   `author_keywords` text NOT NULL,
@@ -51,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `#__ifirsci_data` (
   `coden` varchar(100) NOT NULL,
   `abbrev_source_title` varchar(200) NOT NULL,
   `document_type` varchar(200) NOT NULL,
-  `source` varchar(100) NOT NULL,
+  `bibtex` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
