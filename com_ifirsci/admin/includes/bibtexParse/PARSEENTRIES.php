@@ -1,5 +1,4 @@
 <?php
-header('Content-type: text/html; charset=iso-8859-1');
 /*
 v21
 
@@ -62,40 +61,25 @@ This array will be empty unless the following condition is met:
 
 // For a quick command-line test (php -f PARSEENTRIES.php) after installation, uncomment these lines:
 
+/*************************
 // Parse a file
 	$parse = NEW PARSEENTRIES();
 	$parse->expandMacro = TRUE;
 //	$array = array("RMP" =>"Rev., Mod. Phys.");
 //	$parse->loadStringMacro($array);
 //	$parse->removeDelimit = FALSE;
-	$parse->fieldExtract = TRUE;
-	$parse->openBib("scopus.bib");
+//	$parse->fieldExtract = FALSE;
+	$parse->openBib("bib.bib");
 	$parse->extractEntries();
 	$parse->closeBib();
 	list($preamble, $strings, $entries, $undefinedStrings) = $parse->returnArrays();
-	//print_r($preamble);
-	//print "\n";
-	//print_r ($strings);
-	//print "\n";
-	include 'PARSECREATORS.php';
-	$parseauthors= NEW PARSECREATORS();
-	foreach ($entries as $entrie){
-		print_r (htmlentities($entrie['bibtexCitation'],ENT_IGNORE));
-		print '<HR><br/>';
-		$authors = $parseauthors->parse($entrie['author']);
-		foreach ($authors as $author){
-			echo htmlentities($author[1].' '.$author[2].'; ');
-		}
-		
-		print '<br/><HR>';
-		print htmlentities($entrie['abstract']);
-	} 
-	print_r ("<HR>");
-
-
-
-
-
+	print_r($preamble);
+	print "\n";
+	print_r($strings);
+	print "\n";
+	print_r($entries);
+	print "\n\n";
+*************************/
 
 /************************
 // Parse a bibtex PHP string
