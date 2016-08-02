@@ -22,7 +22,7 @@ class IfirSciBibTexImporter {
 	 */
 	public function parse($bibfile){
 		$msg='';
-		$bibtex = new Structures_BibTex(array('validate'=>true, 'unwrap'=>true ));
+		$bibtex = new Structures_BibTex(array('validate'=>false, 'unwrap'=>true ));
 		$bibtex->loadFile($bibfile);
 		if ($bibtex->parse()){
 			if ($bibtex->hasWarning()){
@@ -31,25 +31,21 @@ class IfirSciBibTexImporter {
 				}
 			}
 			foreach ($bibtex->data as $data){
-				$newpublication=JTable::getInstance('Publication', 'IfirSci');
+				$newpub=JTable::getInstance('Publication', 'IfirSci');
+				$newPubs=array();
 				$type=$data['entrieType'];
 				if (!empty($type)){
-					
-					if (isset($data['keywords'] ) || isset($data['author_keywords'])){
-					//remplazar separador de keywords
+					foreach ($data['author'] as $auth){
+						$author=implode(',',$auth);
 					}
+					$data['author']=implode('; ',$data['author']);
+					$newpub->bind($data);
+
 				}
+				$newPubs[]=$newpub;
 			}
+			return $newPubs;
 		}
-		
-	}
-	public function _newArtcle($data){
-		
-	}
-	public function _newConference($data){
-		
-	}
-	public function _newBook($data){
 		
 	}
 }
