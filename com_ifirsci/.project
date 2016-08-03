@@ -19,4 +19,11 @@
 	<natures>
 		<nature>org.eclipse.php.core.PHPNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>com_ifirsci</name>
+			<type>2</type>
+			<location>C:/xampp/htdocs/joomla-dev/administrator/components/com_ifirsci</location>
+		</link>
+	</linkedResources>
 </projectDescription>
