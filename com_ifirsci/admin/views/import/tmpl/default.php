@@ -2,7 +2,7 @@
 defined('_JEXEC') or die;
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_ifirsci&view=import'); ?>" method="post" name="adminForm" id="adminForm">
+<form  method="post" name="adminForm" id="adminForm" enctype="multipart/form-data">
  <?php if (!empty( $this->sidebar)) : ?>
   <div id="j-sidebar-container" class="span2">
     <?php echo $this->sidebar; ?>

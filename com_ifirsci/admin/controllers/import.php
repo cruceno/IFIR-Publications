@@ -21,16 +21,28 @@ class IfirSciControllerImport extends JControllerAdmin
 		if ( strtolower(JFile::getExt($filename) ) == 'bib') {
 			if ( JFile::upload($src, $dest) ) {
 				//Redirect to a page of your choice
+				ifirsciimport('helpers.importer.bibtex');
+				$bibtexImporter=&JIfirSciBibTexImporter::getInstance();
+				$parsedpubs=$bibtexImporter->parse($dest);
+				$n=0;
+				foreach ($parsedpubs as $p){
+					if(!$p->store()){
+						JError::raiseWarning(1, JText::_('COM_IFIRSCI_PUBLICATION_COULD_NOT_BE_SAVED').' '.$p->getError());
+					}
+					else{
+						$n++;
+					}
+				}
+				$this->setRedirect('index.php?option=com_ifirsci&view=publications',"Paso por aca");
+				
 			} else {
 				//Redirect and throw an error message
-				$msg = JText::_('COM_IFIRSCI_ERROR_FIE_UPLOAD');
-				$this->setRedirect(JRoute::_('index.php?option=com_ifirsci&view=import', $msg));
+				$this->setRedirect(JRoute::_('index.php?option=com_ifirsci&view=publications', JText::_('COM_IFIRSCI_ERROR_FIE_UPLOAD')));
 				
 			}
 		} else {
 			//Redirect and notify user file is not right extension
-			$msg = JText::_('COM_IFIRSCI_ERROR_FIE_UPLOAD_CHANGE_EXTENSION');
-			$this->setRedirect(JRoute::_('index.php?option=com_ifirsci&view=import', $msg));
+			$this->setRedirect(JRoute::_('index.php?option=com_ifirsci&view=publications',JText::_('COM_IFIRSCI_ERROR_FIE_UPLOAD_CHANGE_EXTENSION')));
 		}
 	}
 }
