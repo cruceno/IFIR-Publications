@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<layout title="com_ifirsci_author_profile_view_default_title" option="com_ifirsci_author_profile_view_default_options">
+		<message>
+			<![CDATA[com_ifirsci_author_profile_view_default_desc]]>
+		</message>
+	</layout>
+	
+<fields name="request">
+      <fieldset name="request">
+         <field
+            name="author"
+            type="sql"
+            class="inputbox"
+            query="SELECT id AS value, author AS author FROM #__ifirsci_authors"
+            default="0"
+            label="COM_IFIRSCI_FIELD_ID_LABEL"
+            description="COM_IFIRSCI_FIELD_ID_DESC"
+            required="true"
+         >
+            <option value="0">JOPTION_SELECT_AUTHOR</option>
+         </field>
+      </fieldset>
+   </fields>
+</metadata>
