@@ -25,5 +25,10 @@
 			<type>2</type>
 			<location>C:/xampp/htdocs/joomla-dev/administrator/components/com_ifirsci</location>
 		</link>
+		<link>
+			<name>site/com_ifirsci</name>
+			<type>2</type>
+			<location>C:/xampp/htdocs/joomla-dev/components/com_ifirsci</location>
+		</link>
 	</linkedResources>
 </projectDescription>
